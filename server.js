@@ -14,11 +14,11 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.post("/", upload.single(), function (req, res) ) {
+app.post("/", upload.single("file"), function (req, res) {
   console.log(req.file)
   res.writeHead(200, { 'Content-Type': 'application/json' });
   res.end(JSON.stringify({size: req.file.size}));
-}
+})
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
